@@ -11,7 +11,7 @@ It is similar in functionality to  Namreeb's [Nampower](https://github.com/namre
 
 
 
-_Is this AddOn for me?_
+_ Is this AddOn for me? _
 
 * If you have high ping (200ms+) and want to greatly increase your DPS and reduce frustration while levelling and in raids, use this mod.
 
