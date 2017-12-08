@@ -1,0 +1,404 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <Frame name="LagCastDummyBar" toplevel="true" hidden="true" movable="true" resizable="true" enableMouse="true" parent="UIParent" frameLevel="10" frameStrata="TOOLTIP">
+		<Size>
+			<AbsDimension x="195" y="18"/>
+		</Size>
+		<Anchors>
+      <!-- updated via a script -->
+			<Anchor point="BOTTOM">
+				<Offset>
+					<AbsDimension x="0" y="55"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+    <Layers>
+			<Layer level="OVERLAY">
+        <Texture alphaMode="BLEND">
+          <Color r="0" g="1" b="0" a="0.4"/>
+        </Texture>
+        <FontString inherits="LagCast_Text" text="move/resize me" />
+      </Layer>
+    </Layers>
+    <Frames>
+      <Frame enableMouse="true">
+        <Size><AbsDimension x="10" y="7"/></Size>
+        <Anchors><Anchor point="TOPLEFT" /></Anchors>
+        <Layers>
+          <Layer level="OVERLAY">
+            <Texture alphaMode="BLEND">
+              <Color r="1" g="0.5" b="0" a="0.5" />
+            </Texture>
+          </Layer>
+        </Layers>
+        <Scripts>
+          <OnMouseDown>LagCastOptions_barMoved(); this:GetParent():StartSizing("TOPLEFT")</OnMouseDown>
+          <OnMouseUp>this:GetParent():StopMovingOrSizing()</OnMouseUp>
+        </Scripts>
+      </Frame>
+      <Frame enableMouse="true">
+        <Size><AbsDimension x="10" y="7"/></Size>
+        <Anchors><Anchor point="TOPRIGHT" /></Anchors>
+        <Layers>
+          <Layer level="OVERLAY">
+            <Texture alphaMode="BLEND">
+              <Color r="1" g="0.5" b="0" a="0.5" />
+            </Texture>
+          </Layer>
+        </Layers>
+        <Scripts>
+          <OnMouseDown>LagCastOptions_barMoved(); this:GetParent():StartSizing("TOPRIGHT")</OnMouseDown>
+          <OnMouseUp>this:GetParent():StopMovingOrSizing()</OnMouseUp>
+        </Scripts>
+      </Frame>
+      <Frame enableMouse="true">
+        <Size><AbsDimension x="10" y="7"/></Size>
+        <Anchors><Anchor point="BOTTOMLEFT" /></Anchors>
+        <Layers>
+          <Layer level="OVERLAY">
+            <Texture alphaMode="BLEND">
+              <Color r="1" g="0.5" b="0" a="0.5" />
+            </Texture>
+          </Layer>
+        </Layers>
+        <Scripts>
+          <OnMouseDown>LagCastOptions_barMoved(); this:GetParent():StartSizing("BOTTOMLEFT")</OnMouseDown>
+          <OnMouseUp>this:GetParent():StopMovingOrSizing()</OnMouseUp>
+        </Scripts>
+      </Frame>
+      <Frame enableMouse="true">
+        <Size><AbsDimension x="10" y="7"/></Size>
+        <Anchors><Anchor point="BOTTOMRIGHT" /></Anchors>
+        <Layers>
+          <Layer level="OVERLAY">
+            <Texture alphaMode="BLEND">
+              <Color r="1" g="0.5" b="0" a="0.5" />
+            </Texture>
+          </Layer>
+        </Layers>
+        <Scripts>
+          <OnMouseDown>LagCastOptions_barMoved(); this:GetParent():StartSizing("BOTTOMRIGHT")</OnMouseDown>
+          <OnMouseUp>this:GetParent():StopMovingOrSizing()</OnMouseUp>
+        </Scripts>
+      </Frame>
+    </Frames>
+    <Scripts>
+      <OnMouseDown>LagCastOptions_barMoved(); this:StartMoving()</OnMouseDown>
+      <OnMouseUp>this:StopMovingOrSizing()</OnMouseUp>
+    </Scripts>
+  </Frame>
+  
+  <Frame name="LagCastOptions" hidden="true" movable="true" enableMouse="true" parent="UIParent">
+    <Size>
+      <AbsDimension x="387" y="500" />
+    </Size>
+    <Anchors>
+      <Anchor point="CENTER">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+      <BackgroundInsets>
+        <AbsInset left="11" right="12" top="12" bottom="11" />
+      </BackgroundInsets>
+      <TileSize>
+        <AbsValue val="32" />
+      </TileSize>
+      <EdgeSize>
+        <AbsValue val="32" />
+      </EdgeSize>
+    </Backdrop>
+    
+    <Layers>
+      <Layer>
+        <Texture file="Interface\DialogFrame\UI-DialogBox-Header">
+          <Size>
+            <AbsDimension x="160" y="32" />
+          </Size>
+          <Anchors>
+            <Anchor point="TOP">
+              <Offset>
+                <AbsDimension x="0" y="5" />
+              </Offset>
+            </Anchor>
+          </Anchors>
+          <TexCoords left="0.2" right="0.8" top="0" bottom="0.6" />
+        </Texture>
+        <FontString name="$parentTitleString" inherits="LagCast_Text" text="LagCast 0.99.2">
+          <Anchors>
+            <Anchor point="TOP">
+              <Offset>
+                <AbsDimension x="0" y="-4" />
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+      </Layer>
+    </Layers>
+    
+    <Frames>
+      <Frame name="$parentCurrentLatency">
+        <Scripts>
+          <OnUpdate>
+            LagCastOptions_Latency_OnUpdate()
+          </OnUpdate>
+        </Scripts>
+        <Size>
+          <AbsDimension x="200" y="17" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPRIGHT">
+            <Offset>
+              <AbsDimension x="-20" y="-53" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer>
+            <FontString name="$parentLabel" setAllPoints="true" inherits="LagCast_Text" text="Current Latency (ms)" />
+          </Layer>
+        </Layers>
+      </Frame>
+      
+      <!-- nothing can depend on this for layout -->
+      <Button name="$parentMode" inherits="UIDropDownMenuTemplate" enableMouse="true">
+        <Size>
+          <AbsDimension x="200" y="32" />
+        </Size>
+        <Anchor point="LEFT" />
+        <Scripts>
+          <OnLoad>
+            LagCastOptionsMode_Layout()
+          </OnLoad>
+          <OnShow>
+            LagCastOptionsMode_Populate()
+          </OnShow>
+        </Scripts>
+      </Button>
+  
+      <CheckButton name="$parentPreventSpam" inherits="UIOptionsCheckButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="30" y="-85" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer>
+            <FontString name="$parentLabel" parent="UIParent" inherits="GameFontNormalSmall" text="Prevent premature spell casting spam">
+              <Anchors>
+                <Anchor point="LEFT" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="0" y="0.5" />
+                  </Offset>
+                </Anchor>
+              </Anchors>
+            </FontString>
+          </Layer>
+        </Layers>
+        <Scripts>
+          <OnEnter>
+            local tooltip = "Each spell cast request requires a roundtrip to the server, "..
+              "during this roundtrip further spellcast attempts are blocked. " ..
+              "When spam prevention is enabled these spells are not transmitted until " ..
+              "|cffffffffLagCast|r believes the server has received the spell being cast."
+            GameTooltip:SetOwner(getglobal(this:GetName().."Label"), "ANCHOR_RIGHT", 50, 0)
+            GameTooltip:SetText(tooltip, nil, nil, nil, nil, 1)
+          </OnEnter>
+          <OnShow>
+            this:SetChecked(not(LagCastAccount) or not(LagCastAccount.disableSpamPrevention))
+          </OnShow>
+        </Scripts>
+      </CheckButton>
+      
+      <CheckButton name="$parentTimerDisplay" inherits="UIOptionsCheckButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="$parentPreventSpam" relativePoint="BOTTOMLEFT" />
+        </Anchors>
+        <Layers>
+          <Layer>
+            <FontString name="$parentLabel" parent="UIParent" inherits="GameFontNormalSmall" text="Display server-side cast time remaining (estimated)">
+              <Anchors>
+                <Anchor point="LEFT" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="0" y="0.5" />
+                  </Offset>
+                </Anchor>
+              </Anchors>
+            </FontString>
+          </Layer>
+        </Layers>
+        <Scripts>
+          <OnEnter>
+            local tooltip = "Displays what the server believes the remaining cast time is. When the casting spark hits the lag overlay, this value will hit 0.0s and disappear (even though a small portion of the cast bar still remains). At this point the spell is very likely to have been cast, even if you press Esc or start moving."
+            GameTooltip:SetOwner(getglobal(this:GetName().."Label"), "ANCHOR_RIGHT", -25, 0)
+            GameTooltip:SetText(tooltip, nil, nil, nil, nil, 1)
+          </OnEnter>
+          <OnShow>
+            this:SetChecked(not(LagCastAccount) or not(LagCastAccount.disableTimerDisplay))
+          </OnShow>
+        </Scripts>
+      </CheckButton>
+      
+      <EditBox name="$parentExtraBufferEditBox" inherits="InputBoxTemplate" autoFocus="false">
+        <Size>
+          <AbsDimension x="54" y="20" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPRIGHT" relativeTo="$parentCurrentLatency" relativePoint="BOTTOMRIGHT">
+            <Offset>
+              <AbsDimension x="0" y="-80" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnEnterPressed>
+            this:ClearFocus();
+          </OnEnterPressed>
+          <OnTextChanged>
+            LagCastOptions_OnExtraBufferText()
+          </OnTextChanged>
+        </Scripts>
+      </EditBox>
+    
+      <Slider name="$parentExtraBufferSlider" inherits='OptionsSliderTemplate' minValue="0" maxValue="200" defaultValue="0" valueStep="1">
+        <Anchors>
+          <Anchor point="LEFT">
+            <Offset>
+              <AbsDimension x="20" y="0" />
+            </Offset>
+          </Anchor>
+          <Anchor point="TOPRIGHT" relativeTo="$parentExtraBufferEditBox" relativePoint="TOPLEFT">
+            <Offset>
+              <AbsDimension x="-7" y="-2" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnLoad>
+            getglobal(this:GetName() .. "Text"):SetText("Extra Buffer (ms)")
+            local min, max = this:GetMinMaxValues()
+            getglobal(this:GetName() .. "Low"):SetText(min.."ms")
+            getglobal(this:GetName() .. "High"):SetText(max.."ms")
+            this.tooltipText = "Adds this many milliseconds to the cast timer before spells may be cancelled, increase this if your latency is spiky."
+          </OnLoad>
+          <OnValueChanged>LagCastOptions_OnExtraBuffer()</OnValueChanged>
+        </Scripts>
+      </Slider>
+          
+      <EditBox name="$parentMinLagEditBox" inherits="InputBoxTemplate" autoFocus="false">
+        <Size>
+          <AbsDimension x="54" y="20" />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPRIGHT" relativeTo="$parentExtraBufferEditBox" relativePoint="BOTTOMRIGHT">
+            <Offset>
+              <AbsDimension x="0" y="-30" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnEnterPressed>
+            this:ClearFocus();
+          </OnEnterPressed>
+          <OnTextChanged>
+            LagCastOptions_OnMinLagText()
+          </OnTextChanged>
+        </Scripts>
+      </EditBox>
+      
+      <Slider name="$parentMinLagSlider" inherits='OptionsSliderTemplate' minValue="0" maxValue="800" defaultValue="0" valueStep="5">
+        <Anchors>
+          <Anchor point="LEFT">
+            <Offset>
+              <AbsDimension x="20" y="0" />
+            </Offset>
+          </Anchor>
+          <Anchor point="TOPRIGHT" relativeTo="$parentMinLagEditBox" relativePoint="TOPLEFT">
+            <Offset>
+              <AbsDimension x="-7" y="-2" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnLoad>
+            getglobal(this:GetName() .. "Text"):SetText("Minimum Allowable Latency (ms)")
+            local min, max = this:GetMinMaxValues()
+            getglobal(this:GetName() .. "Low"):SetText(min.."ms")
+            getglobal(this:GetName() .. "High"):SetText(max.."ms")
+            this.tooltipText = "Sets the lowest allowable network latency. If latency lower than the Minimum Allowable Latency is encounted, this value is used instead.\n\n"..
+              "If your latency is generally spiky, set this value to the uppermost spike."
+          </OnLoad>
+          <OnValueChanged>LagCastOptions_OnMinLag()</OnValueChanged>
+        </Scripts>
+      </Slider>
+
+      <Button inherits="UIPanelButtonTemplate" text="Okay">
+        <Size>
+          <AbsDimension x="100" y="22" />
+        </Size>
+        <Anchors>
+          <Anchor point="BOTTOMRIGHT" relativePoint="BOTTOM">
+            <Offset>
+              <AbsDimension x="-15" y="20" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnClick>LagCastOptions_OnOkay()</OnClick>
+        </Scripts>
+      </Button>
+
+      <Button name="$parentCancel" inherits="UIPanelButtonTemplate" text="Cancel">
+        <Size>
+          <AbsDimension x="100" y="22" />
+        </Size>
+        <Anchors>
+          <Anchor point="BOTTOMLEFT" relativePoint="BOTTOM">
+            <Offset>
+              <AbsDimension x="15" y="20" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnClick>LagCastOptions_OnCancel()</OnClick>
+        </Scripts>
+      </Button>
+      
+      <ScrollFrame name="$parentBars" inherits="FauxScrollFrameTemplate">
+        <Size>
+          <AbsDimension x='100' y='207' />
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="$parentMinLagSlider" relativePoint="BOTTOMLEFT">
+            <Offset>
+              <AbsDimension x="0" y="-20" />
+            </Offset>
+          </Anchor>
+          <Anchor point="TOPRIGHT">
+            <Offset>
+              <AbsDimension x="-40" y="0" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnShow>
+            LagCastOptionsScroll_LoadTextures()
+          </OnShow>
+        </Scripts>
+      </ScrollFrame>
+      
+    </Frames>
+      
+    <Scripts>
+			<OnShow>
+				LagCastOptions_OnShow();
+			</OnShow>
+      <OnMouseDown>this:StartMoving()</OnMouseDown>
+      <OnMouseUp>this:StopMovingOrSizing()</OnMouseUp>
+    </Scripts>
+  </Frame>
+</Ui>

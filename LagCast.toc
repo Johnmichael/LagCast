@@ -1,0 +1,13 @@
+## Interface: 11200
+## Title: LagCast
+## Author: homercles <lets get weird> @ Emerald Dream
+## Version: 0.99.2
+## Notes: Intelligent configurable spell stopcasting, new spell cast frames, actionbar hooking
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariablesPerCharacter: LagCastCharacter
+## SavedVariables: LagCastAccount
+LagCastTemplates.xml
+LagCastFrame.xml
+LagCastOptions.lua
+LagCastOptions.xml

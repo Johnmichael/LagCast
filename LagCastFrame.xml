@@ -1,0 +1,65 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Script file="LagCastFrame.lua"/>
+	<GameTooltip name="LagCastTooltip" inherits="GameTooltipTemplate" parent="UIParent" hidden="true"/>
+  <!-- blizzard-style frame -->
+	<StatusBar name="LagCastFrame" inherits="LagCastTemplate" movable="true" toplevel="true" parent="UIParent" hidden="true">
+		<Anchors>
+			<Anchor point="BOTTOM">
+				<Offset>
+					<AbsDimension x="0" y="55"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				LagCastFrame_OnLoad();
+			</OnLoad>
+			<OnEvent>
+				LagCastFrame_OnEvent();
+			</OnEvent>
+			<OnUpdate>
+				LagCastFrame_OnUpdate();
+			</OnUpdate>
+      <OnShow>
+        local x, y = 5, 3
+        local tframe = getglobal(this:GetName() .. "Text")
+        tframe:ClearAllPoints()
+        if LagCastAccount and LagCastAccount.disableTimerDisplay then
+          tframe:SetPoint("CENTER", this, x, y)
+        else
+          tframe:SetPoint("CENTER", this, x-15, y)
+        end
+      </OnShow>
+		</Scripts>
+	</StatusBar>
+
+  <!-- simple but resizable frame -->
+	<StatusBar name="LagCastCustomFrame" inherits="LagCastCustomTemplate" movable="true" toplevel="true" parent="UIParent" hidden="true">
+		<Anchors>
+			<Anchor point="BOTTOM">
+				<Offset>
+					<AbsDimension x="0" y="55"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnEvent>
+				LagCastFrame_OnEvent();
+			</OnEvent>
+			<OnUpdate>
+				LagCastFrame_OnUpdate();
+			</OnUpdate>
+      <OnShow>
+        local x, y = 0, 0
+        local tframe = getglobal(this:GetName() .. "Text")
+        tframe:ClearAllPoints()
+        if LagCastAccount and LagCastAccount.disableTimerDisplay then
+          tframe:SetPoint("CENTER", this, x, y)
+        else
+          tframe:SetPoint("CENTER", this, x-15, y)
+        end
+      </OnShow>
+		</Scripts>
+	</StatusBar>
+  
+</Ui>

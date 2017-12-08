@@ -1,0 +1,42 @@
+There are two functions you may use for hooking into LagCast's spellcasting
+internals.
+
+The first function is
+   LagCast(spellName): <no return value>
+      spellName: the name of the spell. this is passed directly onto the
+                 Blizzard API, therefore:
+                   /script LagCast("Frostbolt") -- this will cast your maxrank frostbolt
+
+
+There is a more detailed hook you can use, lets look at the source code for LagCast first:
+  function LagCast(spellname)
+    if LagCast_StopCasting(false) then
+      CastSpellByName(spellname)
+    end
+  end
+
+
+It's very simple, it centres on the function "LagCast_StopCasting", lets look at the spell
+formally and see how we can use it in more complicated macros:
+
+  LagCast_StopCasting(dryRun): returns boolean, whether spell
+    dryRun: boolean, if true then SpellStopCasting() will not be called but the function
+            will act as though it had been
+    return value:
+      Returns true if it's safe to cast a spell. If the cast bar is not shown this will
+      return true regardless of whether you're not able to (spell locked, out of mana)
+      
+Usage:
+  Lets say you had the following stopcasting macro: 
+    /cast Nature's Swiftness
+    /script SpellStopCasting()
+    /cast Healing Touch
+    
+  To achieve the following while respecting the castbar, you can do this (it has to be a single line):
+    /script if LagCast_StopCasting(true) then CastSpellByName("Nature's Swiftness"); SpellStopCasting(); LagCast("Healing Touch"); end
+  
+  If you're not doing instantcast magic (ones that involve Nature's Swiftness/Presence of Mind/etc), the
+  following are completely equivalent:
+    *) pressing your firebolt key
+    *) /script LagCast("Firebolt")
+    *) /script if LagCast_StopCasting(true) then LagCast("Firebolt") end

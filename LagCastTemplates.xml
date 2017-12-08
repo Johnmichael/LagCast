@@ -1,0 +1,178 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <FontString name="LagCast_Text" font="Fonts\FRIZQT__.TTF" virtual="true">
+    <FontHeight>
+      <AbsValue val="12" />
+    </FontHeight>
+    <Color r="1" g="0.8196079" b="0" />
+    <Shadow>
+      <Color r="0" g="0" b="0" />
+      <Offset>
+        <AbsDimension x="1" y="-1" />
+      </Offset>
+    </Shadow>
+  </FontString>
+  
+  <!--
+    Default template. Border allows scaling, sparks are very messy with scaling
+    so we dont do that.  An additional "fuck you" is that Texture only pays
+    attention to 'Size' if you want to scale the texture, it ignores Anchors
+    when determining the size the texture will scale to.
+  -->
+	<StatusBar name="LagCastTemplate" drawLayer="BORDER" virtual="true">
+		<Size>
+			<AbsDimension x="195" y="13"/>
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture setAllPoints="true">
+					<Color r="0" g="0" b="0" a="0.5"/>
+				</Texture>		
+			</Layer>
+			<Layer level="ARTWORK">
+				<FontString name="$parentText" inherits="GameFontHighlight">
+					<Anchors>
+            <Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="-10" y="3"/>
+							</Offset>
+            </Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentTextTimer" inherits="GameFontHighlight">
+					<Anchors>
+            <Anchor point="LEFT" relativeTo="$parentText" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="3" y="0"/>
+							</Offset>
+            </Anchor>
+					</Anchors>
+				</FontString>
+				<Texture name="$parentBorder" file="Interface\CastingBar\UI-CastingBar-Border">
+					<Size>
+						<AbsDimension x="256" y="64"/>
+					</Size>
+					<Anchors>
+            <Anchor point="TOPLEFT">
+              <Offset>
+								<AbsDimension x="-30.5" y="28"/>
+							</Offset>
+            </Anchor>
+            <Anchor point="BOTTOMRIGHT">
+              <Offset>
+								<AbsDimension x="30.5" y="-23"/>
+							</Offset>
+            </Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<Texture name="$parentSpark" file="Interface\CastingBar\UI-CastingBar-Spark" alphaMode="ADD">
+          <Size><AbsDimension x="32" y="32"/></Size>
+					<Anchors><Anchor point="CENTER" /></Anchors>
+				</Texture>
+				<Texture name="$parentCancelSpark" file="Interface\CastingBar\UI-CastingBar-Spark" alphaMode="ADD">
+          <Size><AbsDimension x="32" y="32"/></Size>
+					<Anchors><Anchor point="CENTER" /></Anchors>
+				</Texture>
+				<Texture name="$parentFlash" file="Interface\CastingBar\UI-CastingBar-Flash" alphaMode="ADD">
+					<Anchors>
+            <Anchor point="TOPLEFT">
+              <Offset>
+								<AbsDimension x="-30.5" y="28"/>
+							</Offset>
+            </Anchor>
+            <Anchor point="BOTTOMRIGHT">
+              <Offset>
+								<AbsDimension x="30.5" y="-23"/>
+							</Offset>
+            </Anchor>
+					</Anchors>
+				</Texture>
+        <Texture name="$parentCancelOverlay" alphaMode="BLEND">
+					<Anchors>
+            <Anchor point="TOPRIGHT">
+              <Offset>
+								<AbsDimension x="-2" y="1"/>
+							</Offset>
+            </Anchor>
+            <Anchor point="BOTTOMLEFT">
+              <Offset>
+								<AbsDimension x="143" y="2"/>
+							</Offset>
+            </Anchor>
+					</Anchors>
+          <Color r="0" g="1" b="0.5" a="0.4"/>
+        </Texture>
+			</Layer>
+		</Layers>
+		<BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+		<BarColor r="1.0" g="0.7" b="0.0"/>
+	</StatusBar>
+  
+	<StatusBar name="LagCastCustomTemplate" drawLayer="BORDER" virtual="true">
+		<Size>
+			<AbsDimension x="300" y="32"/>
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture setAllPoints="true">
+					<Color r="0" g="0" b="0" a="0.5"/>
+				</Texture>		
+			</Layer>
+			<Layer level="ARTWORK">
+				<FontString name="$parentText" inherits="GameFontHighlight">
+					<Anchors>
+            <Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="-15" y="0"/>
+							</Offset>
+            </Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentTextTimer" inherits="GameFontHighlight">
+					<Anchors>
+            <Anchor point="LEFT" relativeTo="$parentText" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="3" y="0"/>
+							</Offset>
+            </Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="OVERLAY">
+				<Texture name="$parentSpark" alphaMode="ADD">
+          <Color r="1" g="1" b="1" a="1" />
+          <Gradient orientation="HORIZONTAL">
+            <MinColor r="1" g="1" b="1" a="0" />
+            <MaxColor r="1" g="1" b="1" a="0.8" />
+          </Gradient>
+				</Texture>
+				<Texture name="$parentCancelSpark" alphaMode="ADD">
+          <Color r="1" g="1" b="1" a="0.8" />
+          <Gradient orientation="HORIZONTAL">
+            <MinColor r="1" g="1" b="1" a="0.8" />
+            <MaxColor r="1" g="1" b="1" a="0" />
+          </Gradient>
+				</Texture>
+				<Texture name="$parentFlash" />
+        <Texture name="$parentCancelOverlay" alphaMode="BLEND">
+					<Anchors>
+            <Anchor point="TOPRIGHT">
+              <Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+            </Anchor>
+            <Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT">
+              <Offset>
+								<AbsDimension x="-150" y="0"/>
+							</Offset>
+            </Anchor>
+					</Anchors>
+          <Color r="0" g="1" b="0.5" a="0.4"/>
+        </Texture>
+			</Layer>
+		</Layers>
+		<BarColor r="1.0" g="0.7" b="0.0"/>
+	</StatusBar>
+</Ui>
