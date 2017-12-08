@@ -1,8 +1,6 @@
 # LagCast
 
-This AddOn is for the WoW Classic (1.12 patch) servers, it will
-not work with the pre-Burning Crusade patch or anything after.
-The purpose is to emulate the Quartz Castbar mod which displayed
+The purpose of this AddOn is to emulate the Quartz Castbar which displayed
 estimated latency, furthermore it intelligently cancels spells
 without any further configuration or special macros required.
 
