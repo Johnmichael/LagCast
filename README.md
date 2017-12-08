@@ -6,7 +6,7 @@ The purpose is to emulate the Quartz Castbar mod which displayed
 estimated latency, furthermore it intelligently cancels spells
 without any further configuration or special macros required.
 
-It is similar in functionality to  Namreeb's [Nampower](https://github.com/namreeb/nampower). The benefit of this AddOn is that it lacks the risk of a primitive anti-cheat believing you are attempting to hack or otherwise cheat.
+It is similar in functionality to  Namreeb's [Nampower](https://github.com/namreeb/nampower). Comparatively the benefit of this AddOn is that it lacks the risk of a primitive anti-cheat believing you are attempting to hack or otherwise cheat.
 
 
 
