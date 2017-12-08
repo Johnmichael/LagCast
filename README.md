@@ -6,14 +6,14 @@ The purpose is to emulate the Quartz Castbar mod which displayed
 estimated latency, furthermore it intelligently cancels spells
 without any further configuration or special macros required.
 
-It is similar in functionality to  Namreeb's [Nampower](https://github.com/namreeb/nampower).
+It is similar in functionality to  Namreeb's [Nampower](https://github.com/namreeb/nampower). The benefit of this AddOn is that it lacks the risk of a primitive anti-cheat believing you are attempting to hack or otherwise cheat.
 
 
 
 
 Is this AddOn for me?
 
-* If you have high ping (200ms+) and want to greatly increase your DPS and reduce frustration while levelling and in raids, use this mod.
+* If you have high ping (200ms+) and want to greatly increase your DPS and reduce frustration while leveling and in raids, use this mod.
 
 * If you have moderate ping (70ms+) and want to experiment to see if you get a DPS boost in raids.
 
