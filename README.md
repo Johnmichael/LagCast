@@ -13,11 +13,11 @@ It is similar in functionality to  Namreeb's [Nampower](https://github.com/namre
 
 Is this AddOn for me?
 
-* If you have high ping (200ms+) and want to greatly increase your DPS and reduce frustration while leveling and in raids, use this mod.
+* If you have high ping (200ms+) and want to greatly increase your DPS and reduce frustration while leveling and in raids, use this AddOn.
 
 * If you have moderate ping (70ms+) and want to experiment to see if you get a DPS boost in raids.
 
-* This mod does not benefit from constant interruptions to your cast times
+* This AddOn does not benefit from constant interruptions to your cast times
   (ie PvP). It does what it can to compensate for it, but if you're hit 2.95s
   into a 3s cast causing spell pushback and you're mashing away for your
   next spell, prepare for disappointment.
@@ -60,7 +60,7 @@ usage is:
   override hooks (to let you use other castbars like oCB). This
   mode still performs spell autocancelling:
     /lc stop_only
-    -- Do this if you have non-blizzard castbar mods loaded to get
+    -- Do this if you have non-blizzard castbar AddOns loaded to get
     -- them back.
     /console reloadui
 
@@ -68,7 +68,7 @@ usage is:
   not perform autocancelling:
     /lc bar_only
 
-  If you have 'bar_only' mode set or if you have this mod completely
+  If you have 'bar_only' mode set or if you have this AddOn completely
   disabled, you can still invoke intelligent spellstopcasting like so.
   This is how you would craft an explicit macro, this is more for the
   poweruser who knows what they are doing:
@@ -78,7 +78,7 @@ usage is:
     /script LagCast("Fireball")
   OR this for spell ranks
     /script LagCast("Frostbolt(Rank 1)")
-  (Remember you will need to disable this mod and possibly reload your UI
+  (Remember you will need to disable this AddOn and possibly reload your UI
    if you're doing that power-user thing)
 
 
@@ -93,7 +93,7 @@ their operation is quite simple. They can be accessed via the command:
     you will get a far-lower than expected ping and this could lead
     to your spells getting cancelled. If you know you are always 350ms
     away from the server and for some reason you get a ping of
-    220ms, you can "force" this mod to think it's actually 350ms which
+    220ms, you can "force" LagCast to think it's actually 350ms which
     will prevent spell casts being cancelled prematurely.
 
   Extra Buffer:
