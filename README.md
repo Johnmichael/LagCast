@@ -22,7 +22,7 @@ Is this AddOn for me?
   into a 3s cast causing spell pushback and you're mashing away for your
   next spell, prepare for disappointment.
 
-  _ If you live next door to the server, lucky you. You probably don't need this._
+  If you live next door to the server, lucky you. You probably don't need this.
 
 ## The Problem
 
